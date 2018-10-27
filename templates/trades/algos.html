@@ -1,3 +1,17 @@
-{% for algo in algos %}
-<a href="{% url 'algo-detail' algo.name %}">{{algo.name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{algo.average}}<br/>
-{% endfor %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Average</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for algo in algos %}
+        <tr>
+            <td><a href="{% url 'algo-detail' algo.name %}">{{algo.name}}</a></td>
+            <td>{{algo.average}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
