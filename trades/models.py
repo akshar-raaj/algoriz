@@ -12,3 +12,6 @@ class Algorithm(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def average(self):
+        return sum([float(each) for each in self.PnL])/len(self.PnL)
