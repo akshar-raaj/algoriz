@@ -3,3 +3,4 @@ pytz==2018.6
 numpy==1.15.3
 requests
 psycopg2
+django-graphos
