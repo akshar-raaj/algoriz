@@ -25,7 +25,7 @@ SECRET_KEY = 'a#l@_bofm=q)&$i=t#u1$1x*sqa$nx6ms260p7d793+bz861vh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'trades',
+    'graphos',
 ]
 
 MIDDLEWARE = [

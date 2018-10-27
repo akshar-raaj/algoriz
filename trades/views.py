@@ -5,10 +5,14 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 from algoriz.services import pull_close_prices, algo_result
 from .forms import AlgoForm
 from .models import Algorithm
+
+from graphos.sources.simple import SimpleDataSource
+from graphos.renderers.gchart import LineChart
 
 
 class CreateAlgoView(View):
@@ -45,4 +49,25 @@ class AlgosView(TemplateView):
         algos = Algorithm.objects.all()
         return {
             'algos': algos
+        }
+
+
+class AlgoDetailView(TemplateView):
+    template_name = 'trades/algo.html'
+
+    def get_context_data(self, *args, **kwargs):
+        name = kwargs['name']
+        algo = get_object_or_404(Algorithm, name=name)
+        PnL = [float(each) for each in algo.PnL]
+        positions = [float(each) for each in algo.positions]
+        data = zip(PnL, positions)
+        data = [list(each) for each in data]
+        for index, each in enumerate(data):
+            each.insert(0, index+1)
+        data.insert(0, ['Day', 'PnL', 'Position'])
+        data_source = SimpleDataSource(data=data)
+        chart = LineChart(data_source)
+        return {
+            'algo': algo,
+            'chart': chart
         }
