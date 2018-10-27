@@ -10,7 +10,7 @@ def pull_close_prices(ticker):
     url = 'https://api.iextrading.com/1.0/stock/%s/chart/1y' % (ticker,)
     response = requests.get(url)
     js = response.json()
-    return js
+    return [day_data['close'] for day_data in js]
 
 
 def algo_result(condition, action, prices):
@@ -84,3 +84,4 @@ def test_algo_results():
  
     print(positions)
     print('\n')
+    print PnL
