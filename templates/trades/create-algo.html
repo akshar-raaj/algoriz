@@ -1,1 +1,31 @@
-{{algo_form.as_table}}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="id_name">Algo Name</label>
+            {{algo_form.name}}
+        </div>
+        <div class="form-group">
+            <label for="id_signal">Signal</label>
+            {{algo_form.signal}}
+        </div>
+        <div class="form-check">
+            <label for="id_trade">Trade</label>
+            {{algo_form.trade}}
+        </div>
+        <div class="form-check">
+            <label for="id_ticker">Ticker</label>
+            {{algo_form.ticker}}
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
