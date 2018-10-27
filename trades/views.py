@@ -7,5 +7,8 @@ from django.http import HttpResponse
 
 
 class CreateAlgoView(View):
+    template_name = 'trades/create-algo.html'
     def get(self, request, *args, **kwargs):
-        return HttpResponse("Create Algo page")
+        context = {
+        }
+        return render(request, self.template_name, context)
